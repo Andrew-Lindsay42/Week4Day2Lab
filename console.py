@@ -1,3 +1,4 @@
+import datetime
 from models.staff import Staff
 from models.animal import Animal
 
@@ -7,8 +8,8 @@ import repositories.animal_repository as animal_repo
 animal_repo.delete_all()
 staff_repo.delete_all()
 
-staff1 = Staff('Andrew', '02/05/2021', 'Keepers', 5)
-staff2 = Staff('Joe Exotic', '20/03/2020', 'Keepers', 1)
+staff1 = Staff('Andrew', datetime.date(2021, 5, 2), 'Keepers', 5)
+staff2 = Staff('Joe Exotic', datetime.date(2020, 3, 20), 'Keepers', 1)
 staff_repo.save(staff1)
 staff_repo.save(staff2)
 
@@ -24,7 +25,7 @@ tiger.staff = staff1
 animal_repo.update(tiger)
 
 
-# print(animal_repo.find_keeper(tiger2).__dict__)
+print(animal_repo.find_keeper(tiger2).__dict__)
 
 # res = staff_repo.animals_under_care(staff2)
 # for animal in res:
