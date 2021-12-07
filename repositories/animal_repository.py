@@ -45,3 +45,13 @@ def find_keeper(animal):
     if result is not None:
         keeper = find_staff(result[0]['staff_id'])
     return keeper
+
+def remove_animal(id):
+    sql = "DELETE FROM animals WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+def update(animal):
+    sql = "UPDATE animals SET (name, type, staff_id) = (%s, %s, %s) WHERE id = %s"
+    values = [animal.name, animal.type, animal.staff.id, animal.id]
+    run_sql(sql, values)
