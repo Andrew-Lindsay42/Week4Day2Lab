@@ -22,3 +22,13 @@ def list_all():
         animal = Animal(row['name'], row['type'], row['staff_id'], row['id'])
         animal_list.append(animal)
     return animal_list
+
+def find_animal(id):
+    animal = None
+    sql = 'SELECT * FROM animals WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        animal = Animal(result['name'], result['type'], result['staff_id'], result['id'])
+    return animal

@@ -17,7 +17,7 @@ tiger2 = Animal('Shere Khan', 'Tiger', staff2)
 animal_repo.save(tiger)
 animal_repo.save(tiger2)
 
-# print(staff_repo.find_staff(staff2.id).__dict__)
+print(animal_repo.find_animal(tiger2.id).__dict__)
 
 # staff_repo.remove_staff(staff2.id)
 
@@ -25,6 +25,6 @@ animal_repo.save(tiger2)
 # staff1.performance = 6
 # staff_repo.update(staff1)
 
-res = animal_repo.list_all()
-for animal in res:
-    print(animal.__dict__)
+# res = animal_repo.list_all()
+# for animal in res:
+#     print(animal.__dict__)
