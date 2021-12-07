@@ -31,3 +31,8 @@ def find_staff(id):
     if result is not None:
         staff = Staff(result['name'], result['start_date'], result['department'], result['performance'], result['id'])
     return staff
+
+def remove_staff(id):
+    sql = "DELETE FROM staff WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
