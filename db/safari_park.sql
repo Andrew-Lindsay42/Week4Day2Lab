@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS staff;
 
 CREATE TABLE staff (
@@ -7,3 +8,10 @@ CREATE TABLE staff (
   department VARCHAR(255),
   performance INT
 );
+
+CREATE TABLE animals (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+  type VARCHAR(255),
+  staff_id INT REFERENCES staff(id)
+)
