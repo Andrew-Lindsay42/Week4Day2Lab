@@ -11,3 +11,13 @@ def save(staff):
     result = run_sql(sql, values)
     staff.id = result[0]['id']
     return staff
+
+def list_all():
+    staff_list = []
+    sql = 'SELECT * FROM staff'
+    result = run_sql(sql)
+
+    for row in result:
+        staff = Staff(row['name'], row['start_date'], row['department'], row['performance'], row['id'])
+        staff_list.append(staff)
+    return staff_list
