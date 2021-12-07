@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 from models.animal import Animal
+from models.staff import Staff
+from repositories.staff_repository import find_staff
 
 def delete_all():
     sql = "DELETE FROM animals"
@@ -32,3 +34,14 @@ def find_animal(id):
     if result is not None:
         animal = Animal(result['name'], result['type'], result['staff_id'], result['id'])
     return animal
+
+def find_keeper(animal):
+    keeper = None
+
+    sql = "SELECT * FROM animals WHERE id = %s"
+    values = [animal.id]
+    result = run_sql(sql, values)
+
+    if result is not None:
+        keeper = find_staff(result[0]['staff_id'])
+    return keeper
