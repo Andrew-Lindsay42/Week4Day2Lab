@@ -21,3 +21,13 @@ def list_all():
         staff = Staff(row['name'], row['start_date'], row['department'], row['performance'], row['id'])
         staff_list.append(staff)
     return staff_list
+
+def find_staff(id):
+    staff = None
+    sql = 'SELECT * FROM staff WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        staff = Staff(result['name'], result['start_date'], result['department'], result['performance'], result['id'])
+    return staff
