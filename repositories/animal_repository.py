@@ -12,3 +12,13 @@ def save(animal):
     id = results[0]['id']
     animal.id = id
     return animal
+
+def list_all():
+    animal_list = []
+    sql = 'SELECT * FROM animals'
+    result = run_sql(sql)
+
+    for row in result:
+        animal = Animal(row['name'], row['type'], row['staff_id'], row['id'])
+        animal_list.append(animal)
+    return animal_list

@@ -4,17 +4,18 @@ from models.animal import Animal
 import repositories.staff_repository as staff_repo
 import repositories.animal_repository as animal_repo
 
-staff_repo.delete_all()
 animal_repo.delete_all()
+staff_repo.delete_all()
 
 staff1 = Staff('Andrew', '02/05/2021', 'Keepers', 5)
-staff_repo.save(staff1)
-
 staff2 = Staff('Joe Exotic', '20/03/2020', 'Keepers', 1)
+staff_repo.save(staff1)
 staff_repo.save(staff2)
 
 tiger = Animal('Tony', 'Tiger', staff2)
+tiger2 = Animal('Shere Khan', 'Tiger', staff2)
 animal_repo.save(tiger)
+animal_repo.save(tiger2)
 
 # print(staff_repo.find_staff(staff2.id).__dict__)
 
@@ -24,6 +25,6 @@ animal_repo.save(tiger)
 # staff1.performance = 6
 # staff_repo.update(staff1)
 
-res = staff_repo.list_all()
-for staff in res:
-    print(staff.__dict__)
+res = animal_repo.list_all()
+for animal in res:
+    print(animal.__dict__)
