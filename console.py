@@ -13,6 +13,9 @@ staff_repo.save(staff1)
 staff2 = Staff('Joe Exotic', '20/03/2020', 'Keepers', 1)
 staff_repo.save(staff2)
 
+tiger = Animal('Tony', 'Tiger', staff2)
+animal_repo.save(tiger)
+
 # print(staff_repo.find_staff(staff2.id).__dict__)
 
 # staff_repo.remove_staff(staff2.id)

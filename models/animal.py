@@ -1,6 +1,6 @@
 class Animal:
-    def __init__(self, name, type, keeper, id = None):
+    def __init__(self, name, type, staff, id = None):
         self.name = name
         self.type = type
-        self.keeper = keeper
+        self.staff = staff
         self.id = id
