@@ -36,3 +36,8 @@ def remove_staff(id):
     sql = "DELETE FROM staff WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def update(staff):
+    sql = "UPDATE staff SET (name, start_date, department, performance) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [staff.name, staff.start_date, staff.department, staff.performance, staff.id]
+    run_sql(sql, values)

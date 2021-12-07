@@ -18,6 +18,10 @@ print(staff_repo.find_staff(staff2.id).__dict__)
 
 staff_repo.remove_staff(staff2.id)
 
+staff1.name = 'Andrew Lindsay'
+staff1.performance = 6
+staff_repo.update(staff1)
+
 res = staff_repo.list_all()
 for staff in res:
     print(staff.__dict__)
