@@ -47,11 +47,11 @@ def update(staff):
 def animals_under_care(staff):
     animals = []
 
-    sql = "SELECT * FROM animals WHERE staff_id = %s"
+    sql = "SELECT * FROM animals WHERE keeper = %s"
     values = [staff.id]
     results = run_sql(sql, values)
 
     for row in results:
-        animal = Animal(row['name'], row['type'], staff, row['id'] )
+        animal = Animal(row['name'], row['type'], row['keeper'], row['id'] )
         animals.append(animal)
     return animals

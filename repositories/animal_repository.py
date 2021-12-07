@@ -9,7 +9,7 @@ def delete_all():
     run_sql(sql)
 
 def save(animal):
-    sql = "INSERT INTO animals (name, type, staff_id) VALUES (%s, %s, %s) RETURNING *"
+    sql = "INSERT INTO animals (name, type, keeper) VALUES (%s, %s, %s) RETURNING *"
     values = [animal.name, animal.type, animal.staff.id]
     results = run_sql(sql, values)
     id = results[0]['id']
@@ -22,7 +22,7 @@ def list_all():
     result = run_sql(sql)
 
     for row in result:
-        animal = Animal(row['name'], row['type'], row['staff_id'], row['id'])
+        animal = Animal(row['name'], row['type'], row['keeper'], row['id'])
         animal_list.append(animal)
     return animal_list
 
@@ -33,7 +33,7 @@ def find_animal(id):
     result = run_sql(sql, values)[0]
     
     if result is not None:
-        animal = Animal(result['name'], result['type'], result['staff_id'], result['id'])
+        animal = Animal(result['name'], result['type'], result['keeper'], result['id'])
     return animal
 
 def find_keeper(animal):
@@ -44,7 +44,7 @@ def find_keeper(animal):
     result = run_sql(sql, values)
 
     if result is not None:
-        keeper = find_staff(result[0]['staff_id'])
+        keeper = find_staff(result[0]['keeper'])
     return keeper
 
 def remove_animal(id):
@@ -53,6 +53,6 @@ def remove_animal(id):
     run_sql(sql, values)
 
 def update(animal):
-    sql = "UPDATE animals SET (name, type, staff_id) = (%s, %s, %s) WHERE id = %s"
+    sql = "UPDATE animals SET (name, type, keeper) = (%s, %s, %s) WHERE id = %s"
     values = [animal.name, animal.type, animal.staff.id, animal.id]
     run_sql(sql, values)
